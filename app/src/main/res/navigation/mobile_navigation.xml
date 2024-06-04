@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_all_guests">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.devbrunini.convidados.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_all_guests"
+        android:name="com.devbrunini.convidados.ui.AllGuestsFragment"
+        android:label="@string/menu_all_guests"
+        tools:layout="@layout/fragment_all_guests" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.devbrunini.convidados.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_present"
+        android:name="com.devbrunini.convidados.ui.PresentFragment"
+        android:label="@string/menu_present"
+        tools:layout="@layout/fragment_present" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.devbrunini.convidados.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_absent"
+        android:name="com.devbrunini.convidados.ui.AbsentFragment"
+        android:label="@string/menu_absent"
+        tools:layout="@layout/fragment_absent" />
 </navigation>
