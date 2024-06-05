@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_all_guests"
-        android:name="com.devbrunini.convidados.ui.AllGuestsFragment"
+        android:name="com.devbrunini.convidados.view.AllGuestsFragment"
         android:label="@string/menu_all_guests"
         tools:layout="@layout/fragment_all_guests" />
 
     <fragment
         android:id="@+id/nav_present"
-        android:name="com.devbrunini.convidados.ui.PresentFragment"
+        android:name="com.devbrunini.convidados.view.PresentFragment"
         android:label="@string/menu_present"
         tools:layout="@layout/fragment_present" />
 
     <fragment
         android:id="@+id/nav_absent"
-        android:name="com.devbrunini.convidados.ui.AbsentFragment"
+        android:name="com.devbrunini.convidados.view.AbsentFragment"
         android:label="@string/menu_absent"
         tools:layout="@layout/fragment_absent" />
 </navigation>
