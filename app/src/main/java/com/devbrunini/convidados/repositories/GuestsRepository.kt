@@ -1,6 +1,8 @@
 package com.devbrunini.convidados.repositories
 
+import android.content.ContentValues
 import android.content.Context
+import com.devbrunini.convidados.model.GuestsModel
 
 class GuestsRepository private constructor(context: Context){
 
@@ -18,9 +20,20 @@ class GuestsRepository private constructor(context: Context){
         }
     }
 
-    fun save() {
+    fun save(guest: GuestsModel) : Boolean {
 
+        try {
+            val db = guestsDataBase.writableDatabase
+            val values = ContentValues()
 
+            values.put("name", guest.name)
+            values.put("presence", if (guest.presence) 1 else 0)
+
+            db.insert("Guests", null, values)
+            return true
+        } catch (e: Exception) {
+            return false
+        }
     }
 
     fun update(){
