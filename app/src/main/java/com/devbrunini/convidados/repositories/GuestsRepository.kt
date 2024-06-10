@@ -88,4 +88,22 @@ class GuestsRepository private constructor(context: Context){
 
     }
 
+    fun getAllPresence(present:Boolean): List<GuestsModel> {
+        val db = guestsDataBase.readableDatabase
+        val list = ArrayList<GuestsModel>()
+        val cursor = db.rawQuery("SELECT * FROM  ${DBConstants.GUESTS.TABLE_NAME} WHERE ${DBConstants.COLUMNS.PRESENCE} = ${if (present) 1 else 0}",null )
+
+        if (cursor.count > 0 && cursor!=null) {
+            while (cursor.moveToNext()) {
+                val id = cursor.getInt(cursor.getColumnIndex(DBConstants.COLUMNS.ID))
+                val name = cursor.getString(cursor.getColumnIndex(DBConstants.COLUMNS.NAME))
+                val presence = cursor.getInt(cursor.getColumnIndex(DBConstants.COLUMNS.PRESENCE))
+                list.add(GuestsModel(id, name, presence == 1))
+            }
+            cursor.close()
+        }
+        return list
+
+    }
+
 }
