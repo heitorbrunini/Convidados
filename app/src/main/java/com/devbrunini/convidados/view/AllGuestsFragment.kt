@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.devbrunini.convidados.databinding.FragmentAllGuestsBinding
 import com.devbrunini.convidados.view.adapter.GuestsAdapter
 import com.devbrunini.convidados.viewmodel.AllGuestsViewModel
@@ -18,6 +16,8 @@ class AllGuestsFragment : Fragment() {
     private var _binding: FragmentAllGuestsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: AllGuestsViewModel
+    private val adapter = GuestsAdapter()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?  ): View {
 
         viewModel = ViewModelProvider(this)[AllGuestsViewModel::class.java]
@@ -26,7 +26,7 @@ class AllGuestsFragment : Fragment() {
 
         binding.recyclerAllGuests.layoutManager = LinearLayoutManager(context)
 
-        binding.recyclerAllGuests.adapter = GuestsAdapter()
+        binding.recyclerAllGuests.adapter = adapter
 
         observe()
         viewModel.getAll()
@@ -40,6 +40,8 @@ class AllGuestsFragment : Fragment() {
 
     fun observe(){
         viewModel.guests.observe(viewLifecycleOwner){
+
+            adapter.updatedGuests(it)
 
         }
     }
